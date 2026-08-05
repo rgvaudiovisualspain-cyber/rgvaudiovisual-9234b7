@@ -45,7 +45,7 @@ const credits = [
   ['Música original', 'David Tirado'],
   ['Elenco', 'Víctor Duque, Enrique Benito, Vera España, Esther García'],
   ['Elenco', 'Irwin Rodríguez, Manolo Carrasco, Alejandro Nogales'],
-  ['Rodaje', 'Tomelloso · sin financiación externa'],
+  ['Rodaje', 'Toledo · sin financiación externa'],
   ['Duración', '17 min'],
   ['Año', '2026'],
 ]
