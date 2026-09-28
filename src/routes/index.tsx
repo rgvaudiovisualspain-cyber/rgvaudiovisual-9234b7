@@ -19,9 +19,63 @@ const navigation: Array<{ id: View; label: string }> = [
 const press = [
   {
     title:
+      'El tomellosero Raúl Plaza estrena en los cines La Dehesa “Voy con todo”, su primer cortometraje de ficción',
+    source: 'Tomelloso.es',
+    date: '16.09.2026',
+    type: 'Noticia',
+    image: '/images/prensa/portadas/tomelloso.jpg',
+    url: 'https://www.tomelloso.es/actualidad/voycontodo?d1827b8f_page=10',
+  },
+  {
+    title:
+      'Raúl Plaza, el joven creador tomellosero que debuta en la ficción con “Voy con todo”',
+    source: 'Cadena SER · CR-eadores',
+    date: '2026',
+    type: 'Entrevista',
+    image: '/images/prensa/portadas/cadena-ser.jpg',
+    url: 'https://cadenaser.com/audio/1789989631207/',
+  },
+  {
+    title: '“Voy con todo”: reparto y equipo artístico',
+    source: 'Letterboxd',
+    date: '2026',
+    type: 'Ficha',
+    image: '/images/voy-con-todo-poster.jpg',
+    url: 'https://letterboxd.com/film/voy-con-todo/cast/',
+  },
+  {
+    title:
+      'Estreno del corto “Voy con todo” de Raúl Plaza el 18 de septiembre en Cines La Dehesa de Tomelloso',
+    source: 'Radio Surco',
+    date: '14.09.2026',
+    type: 'Noticia',
+    image: '/images/prensa/portadas/radio-surco.jpg',
+    url: 'https://radiosurco.es/estreno-del-corto-voy-con-todo-de-raul-plaza-el-18-de-septiembre-en-cines-la-dehesa-de-tomelloso/',
+  },
+  {
+    title:
+      'Raúl Plaza, 19 años y un primer corto hecho “con todo”: “Más que un aplauso, buscamos una reflexión”',
+    source: 'enTomelloso.com',
+    date: '14.09.2026',
+    type: 'Entrevista',
+    image: '/images/prensa/portadas/entomelloso.jpg',
+    url: 'https://entomelloso.com/tomelloso/raul-plaza-19-anos-y-un-primer-corto-hecho-con-todo-mas-que-un-aplauso-buscamos-una-reflexion/543279/',
+  },
+  {
+    title: 'Más de uno con Raúl Plaza: presentación del corto “Voy con todo”',
+    source: 'Onda Cero Puertollano',
+    date: '2026',
+    type: 'Entrevista en vídeo',
+    image: '/images/prensa/portadas/onda-cero.jpg',
+    url: 'https://www.youtube.com/watch?v=6DIhyd_tKnI',
+  },
+  {
+    title:
       'El tomellosero Raúl Plaza Villagra llevará a la pantalla ‘Voy con todo’, una historia de decisiones y sacrificios',
     source: 'Cuadernos Manchegos',
     date: '31.07.2026',
+    type: 'Noticia',
+    image: '/images/prensa/portadas/cuadernos-manchegos.jpg',
     url: 'https://www.cuadernosmanchegos.com/tomelloso/el-tomellosero-raul-plaza-villagra-llevara-a-la-pantalla-voy-con-todo-una-historia-de-decisiones-y-sacrificios/',
   },
   {
@@ -29,6 +83,8 @@ const press = [
       'El joven realizador de Tomelloso Raúl Plaza apuesta por el cine independiente con «Voy con todo»',
     source: 'La Voz de Tomelloso',
     date: '31.07.2026',
+    type: 'Noticia',
+    image: '/images/prensa/portadas/la-voz-de-tomelloso.jpg',
     url: 'https://www.lavozdetomelloso.com/74146/joven_realizador_tomelloso_raul_plaza_apuesta_cine_independiente_voy_todo',
   },
   {
@@ -36,6 +92,8 @@ const press = [
       'El joven realizador de Tomelloso Raúl Plaza apuesta por el cine independiente con «Voy con todo»',
     source: 'Lanza Digital',
     date: '31.07.2026',
+    type: 'Noticia',
+    image: '/images/prensa/portadas/lanza-digital.jpg',
     url: 'https://www.lanzadigital.com/provincia/tomelloso/el-joven-realizador-de-tomelloso-raul-plaza-apuesta-por-el-cine-independiente-con-voy-con-todo/',
   },
 ]
@@ -282,6 +340,13 @@ function Press() {
         <Eyebrow>Prensa</Eyebrow>
         <h1>Cobertura de<br />‘Voy con todo’</h1>
       </section>
+      <figure className="press-image section-wrap grain">
+        <img
+          src="/images/prensa/presentacion-voy-con-todo.jpg"
+          alt="Raúl Plaza interviene con un micrófono durante la presentación de Voy con todo"
+        />
+        <figcaption>Presentación de «Voy con todo» · Tomelloso, 2026</figcaption>
+      </figure>
       <section className="press-list section-wrap">
         {press.map((article, index) => (
           <a
@@ -289,13 +354,20 @@ function Press() {
             target="_blank"
             rel="noreferrer"
             className="press-article"
-            key={article.source}
+            key={article.url}
           >
             <span className="press-index">0{index + 1}</span>
-            <div>
-              <p>{article.source} · {article.date}</p>
+            <div className="press-cover grain">
+              <img
+                src={article.image}
+                alt={`Portada de ${article.source}: ${article.title}`}
+                loading="lazy"
+              />
+            </div>
+            <div className="press-copy">
+              <p>{article.type} · {article.source} · {article.date}</p>
               <h2>{article.title}</h2>
-              <span className="read-more">Leer noticia <ArrowUpRight size={14} /></span>
+              <span className="read-more">Ver publicación <ArrowUpRight size={14} /></span>
             </div>
           </a>
         ))}
@@ -478,14 +550,24 @@ function TrailerModal({ onClose }: { onClose: () => void }) {
             allowFullScreen
           />
         </div>
-        <a
-          href="https://www.instagram.com/p/DbMU2QnuxAR/"
-          target="_blank"
-          rel="noreferrer"
-          className="instagram-link"
-        >
-          Ver en Instagram <ArrowUpRight size={14} />
-        </a>
+        <div className="trailer-links" aria-label="Ver el tráiler en otras plataformas">
+          <a
+            href="https://www.instagram.com/p/DbMU2QnuxAR/"
+            target="_blank"
+            rel="noreferrer"
+            className="trailer-link"
+          >
+            Instagram <ArrowUpRight size={14} />
+          </a>
+          <a
+            href="https://www.youtube.com/watch?v=1ZL7wGZJ274"
+            target="_blank"
+            rel="noreferrer"
+            className="trailer-link"
+          >
+            YouTube <ArrowUpRight size={14} />
+          </a>
+        </div>
       </div>
     </div>
   )
